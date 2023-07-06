@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "shell_basic"
+git commit -m "shell_permissions"
 git push
