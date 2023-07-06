@@ -1,0 +1,2 @@
+#!/bun/bash
+chown -R vincent:staff _hello
