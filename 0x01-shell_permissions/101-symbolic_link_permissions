@@ -1,2 +1,2 @@
-#!/bun/bash
+#!/bin/bash
 chown -R vincent:staff _hello
