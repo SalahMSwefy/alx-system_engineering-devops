@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s""hello "$LOGNAME
+printf "hello "$LOGNAME"\n"
