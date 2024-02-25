@@ -1,12 +1,11 @@
 #Client configuration file (w/ Puppet)
 
-$lines = 'Host 485447-web-01
-    HostName 18.235.243.86
-    User ubuntu
-    IdentifyFile ~/.ssh/school
-    PasswordAuthentication no'
+include stdlib
 
-file {'/etc/ssh/ssh_config':
-    ensure => file,
-    content => $lines,
+file_line { 'Client configuration file':
+  ensure  => present,
+  path    => '/etc/ssh/sshd_config',
+  line    => 'PasswordAuthentication no
+  IdentityFile ~/.ssh/school',
+  replace => true,
 }
