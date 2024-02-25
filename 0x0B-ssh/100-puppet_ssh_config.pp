@@ -2,10 +2,16 @@
 
 include stdlib
 
-file_line { 'Client configuration file':
+file_line { 'PasswordAuthentication':
   ensure  => present,
   path    => '/etc/ssh/sshd_config',
-  line    => 'PasswordAuthentication no
-  IdentityFile ~/.ssh/school',
+  line    => '  PasswordAuthentication no',
+  replace => true,
+}
+
+file_line { 'IdentityFile':
+  ensure  => present,
+  path    => '/etc/ssh/sshd_config',
+  line    => '  IdentityFile ~/.ssh/school',
   replace => true,
 }
