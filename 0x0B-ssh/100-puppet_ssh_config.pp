@@ -1,5 +1,7 @@
 #Client configuration file (w/ Puppet)
 
+include stdlib
+
 file_line { 'PasswordAuthentication':
   ensure  => 'present',
   path    => '/etc/ssh/sshd_config',
