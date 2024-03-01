@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
-# Install nginx
+# Install nginx web server
+
+# Update package list
 sudo apt-get update
-sudo apt-get -y install nginx
 
-# Create HTML page with Hello World!
-echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
+# Install nginx
+sudo apt-get install -y nginx
 
-# Restart Nginx
-sudo service nginx restart
+# Allow HTTP and HTTPS traffic
+sudo ufw allow 'Nginx HTTP'
+
+# Start nginx
+sudo service nginx start
+
+# Check if nginx is running
+sudo service nginx status
