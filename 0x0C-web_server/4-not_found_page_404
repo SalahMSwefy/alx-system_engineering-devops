@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Configures a new ubuntu machine by installing
+
+sudo apt-get update -y -qq &&
+    sudo apt-get install nginx -y
+
+sudo service nginx start
+sudo ufw allow 'Nginx HTTP'
+
+# Creating new index
+echo -e "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+# Redirect_message
+sudo sed -i '/server_name _;/a \\n\tlocation /redirect_me {\n\t\treturn 301 https://github.com/SalahMSwefy;\n\t}' /etc/nginx/sites-available/default
+
+# Not_found_page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo sed -i '/server_name _;/a \\n\tlocation /not_found_page {\n\t\treturn 404 /404.html;\n\t}' /etc/nginx/sites-available/default
+
+# Restarting nginx
+sudo service nginx restart
