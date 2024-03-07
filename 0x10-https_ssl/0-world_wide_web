@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# get record
+
+DOMAIN=$1
+get_record() {
+    dig "$1.$DOMAIN" | awk -F'[.[:space:]]+' '$5 == "IN" {print "The subdomain " $1 " is a " $6 " record and points to " $7 "." $8 "." $9 "." $10}'
+}
+
+if [ "$#" -eq 1 ]; then
+    get_record "www"
+    get_record "lb-01"
+    get_record "web-01"
+    get_record "web-02"
+else
+    get_record "$2"
+fi
