@@ -5,13 +5,14 @@ sudo apt-get -y install haproxy
 sudo chown $USER:$USER /etc/haproxy/haproxy.cfg
 
 echo "
-frontend estebanweb
-    bind *:80
-    mode http
-    default_backend app
-backend app
-    balance roundrobin
-    server 485447-web-01    18.235.243.86:80 check
-    server 485447-web-02	100.26.219.233:80 check" >>/etc/haproxy/haproxy.cfg
+backend web-backend
+        balance roundrobin
+        server 485447-web-01 3.90.83.4:80 check
+        server 485447-web-02 52.201.190.47:80 check
+
+frontend web-frontend_http
+        bind *:80
+        mode http
+        default_backend web-backend" >>/etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
