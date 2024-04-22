@@ -7,8 +7,8 @@ sudo chown $USER:$USER /etc/haproxy/haproxy.cfg
 echo "
 backend web-backend
         balance roundrobin
-        server 485447-web-01 3.90.83.4:80 check
-        server 485447-web-02 54.172.57.9:80 check
+        server 485447-web-01 18.209.223.50:80 check
+        server 485447-web-02 34.207.154.139:80 check
 
 frontend web-frontend_http
         bind *:80
