@@ -19,11 +19,12 @@ if __name__ == "__main__":
         user_id = user.get('id')
         task_list = []
         for task in tasks:
-            task_dict = {}
-            task_dict["username"] = user.get('username')
-            task_dict["task"] = task.get('title')
-            task_dict["completed"] = task.get('completed')
-            task_list.append(task_dict)
+            if task.get('userId') == user_id:
+                task_dict = {}
+                task_dict["username"] = user.get('username')
+                task_dict["task"] = task.get('title')
+                task_dict["completed"] = task.get('completed')
+                task_list.append(task_dict)
         todo[user_id] = task_list
 
     file_name = "todo_all_employees.json"
